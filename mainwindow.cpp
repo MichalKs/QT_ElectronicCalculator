@@ -4,10 +4,15 @@
 #include <cmath>
 #include <sstream>
 
+
 const double MainWindow::indUnits[] = {1e-6, 1e-9, 1e-3};
 const double MainWindow::capUnits[] = {1e-9, 1e-12, 1e-6, 1e-3};
 const double MainWindow::freqUnits[] = {1e3, 1e6, 1};
 
+/**
+ * @brief MainWindow::MainWindow
+ * @param parent
+ */
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
 
     QLocale::setDefault(QLocale::English);
@@ -27,11 +32,16 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent) {
     freqValue->setValidator(new QDoubleValidator(this));
 
 }
-
+/**
+ * @brief MainWindow::~MainWindow
+ */
 MainWindow::~MainWindow() {
 
 }
 
+/**
+ * @brief MainWindow::calculateClicked
+ */
 void MainWindow::calculateClicked(void) {
 
     QString cValStr = capValue->text();
@@ -103,7 +113,9 @@ void MainWindow::calculateClicked(void) {
     capImpValue->setText(qstr2);
 
 }
-
+/**
+ * @brief MainWindow::enableCalcButton
+ */
 void MainWindow::enableCalcButton(void) {
 
     OperationType op = (OperationType) opCombo->currentIndex();
@@ -137,7 +149,10 @@ void MainWindow::enableCalcButton(void) {
     calcButton->setEnabled(false);
 
 }
-
+/**
+ * @brief MainWindow::opChanged
+ * @param op
+ */
 void MainWindow::opChanged(int op) {
 
     std::cout << "opChanged: new op = " << op << std::endl;
